@@ -24,6 +24,11 @@ format: ## Format the code using cargo
 	@rustup component add rustfmt 2> /dev/null
 	cargo fmt
 
+release:
+	cargo build --release
+
+all: format lint test run
+
 bump: ## Bump the version of the project
 	@echo "Current version is $(shell cargo pkgid | cut -d# -f2)"
 	@read -p "Enter the new version: " version; \
